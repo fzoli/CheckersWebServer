@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:my="/WEB-INF/mytld"
+          version="2.0">
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
+    <jsp:body>
+        <jsp:useBean id="storage"  class="mill.Storage" scope="session" />
+        <c:if test="${!storage.isUserSet}" >
+            <jsp:forward page="sign_in.jspx" />
+        </c:if>
+        <jsp:output doctype-root-element="html"
+                    doctype-public="-//W3C//DTD XHTML 1.1//EN"
+                    doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd" />
+        <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <my:jscript href="lib/lytebox/lytebox.js" />
+                <my:jscript href="lib/jquery.js" />
+                <my:jscript href="index.js" />
+                <link rel="stylesheet" href="lib/lytebox/lytebox.css" type="text/css" media="screen" />
+                <link rel="stylesheet" href="index.css" type="text/css" />
+                <title>Játszma adminisztráció</title>
+            </head>
+            <body>
+                <div id="outer"><div id="middle"><div id="inner">
+                    <div id="wellcome">Üdvözlöm ${storage.username}!</div>
+                    <div id="message">${null}</div>
+                    <form action="FormRequest" method="post">
+                    <table id="list">
+                        <tr><td>Kérem, engedélyezze a JavaScript használatát.</td></tr>
+                    </table>
+                    <a class="frame" href="create_play.jspx" rel="lyteframe">
+                        <input id="create" type="button" class="button" disabled="" value="Létrehoz" />
+                    </a>
+                    <input type="submit" id="connect" class="button" name="join_game" disabled="" value="Csatlakozik" />
+                    <input type="submit" id="remove" class="button" name="remove_game" disabled="" value="Töröl" />
+                    <input type="submit" id="clear" class="button" name="clear_game" disabled="" value="Újraindít" />
+                    <input type="submit" id="exit" class="button" name="sign_out" value="Kijelentkezik" />
+                    <a class="frame" href="flyordie/rules.htm" rel="lyteframe">
+                        <input id="rules" type="button" class="button" value="Játékszabály" />
+                    </a>
+                    </form>
+                    <div id="lastAction">${null}</div>
+                </div></div></div>
+            </body>
+        </html>
+    </jsp:body>
+</jsp:root>

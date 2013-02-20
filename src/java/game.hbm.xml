@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="mill.database.table.Game" table="game">
+    <id column="name" length="20" name="name" type="string">
+      <generator class="assigned"/>
+    </id>
+    <property column="password" length="64" name="password" not-null="false" type="string" unique="false"/>
+    <many-to-one name="owner" class="mill.database.table.User" column="owner" unique="true" />
+  </class>
+</hibernate-mapping>

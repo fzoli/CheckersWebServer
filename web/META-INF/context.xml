@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context unloadDelay="70000" antiJARLocking="true" path="/mill"/>
+<!--
+Beállítottam a szervlet időtúllépését 70 másodpercre,
+hogy a szervlet képes legyen 60 másodpercig is futni, és így képes legyen esemény jelzést küldeni a kliensnek.
+Megjegyzés: hiába állítgatom, akkor is végtelen értéken marad (legalábbis NetBeans-ben)
+-->

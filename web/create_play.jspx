@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:my="/WEB-INF/mytld"
+          version="2.0">
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
+    <jsp:body>
+        <jsp:useBean id="storage"  class="mill.Storage" scope="session" />
+        <jsp:output doctype-root-element="html"
+                    doctype-public="-//W3C//DTD XHTML 1.1//EN"
+                    doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd" />
+        <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <my:jscript href="lib/jquery.js" />
+                <my:jscript href="lib/jquery-tools.js" />
+                <my:jscript href="lib/jquery-maskedinput.js" />
+                <my:jscript href="info.js" />
+                <my:jscript href="create_play.js" />
+                <link rel="stylesheet" href="create_play.css" type="text/css" />
+                <title>Játszma létrehozása</title>
+            </head>
+            <body>
+                <div id="outer"><div id="middle"><div id="inner">
+                    <c:choose>
+                        <c:when test="${storage.isUserSet}">
+                            <c:choose>
+                                <c:when test="${storage.isUserNotOwner}">
+                                    <div id="descr">Játszma létrehozása</div>
+                                    <table>
+                                        <tr>
+                                            <td class="attr">Név:</td>
+                                            <td><input type="text" id="name" class="input" disabled="" title="${storage.gameNameConstrain}" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="attr">Jelszó:</td>
+                                            <td><input type="password" id="password" class="input" disabled="" title="${storage.gamePasswordConstrain}" /></td>
+                                        </tr>
+                                    </table>
+                                    <div class="create">Játszma létrehozásához JavaScript szükséges.</div>
+                                    <div id="message">${null}</div>
+                                </c:when>
+                                <c:otherwise>
+                                    <div id="descr">Ön már hozott létre játszmát.</div>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:when>
+                        <c:otherwise>
+                            <div id="descr">Játszma létrehozásához kérem, jelentkezzen be.</div>
+                        </c:otherwise>
+                    </c:choose>
+                </div></div></div>
+            </body>
+        </html>
+    </jsp:body>
+</jsp:root>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:my="/WEB-INF/mytld"
+          version="2.0">
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+    <jsp:body>
+        <jsp:useBean id="storage"  class="mill.Storage" scope="session" />
+        <c:if test="${storage.isRequestedGameNameNull}" >
+            <jsp:forward page="index.jspx" />
+        </c:if>
+        <jsp:output doctype-root-element="html"
+                    doctype-public="-//W3C//DTD XHTML 1.1//EN"
+                    doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd" />
+        <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <my:jscript href="lib/jquery.js" />
+                <my:jscript href="lib/jquery-tools.js" />
+                <my:jscript href="lib/jquery-maskedinput.js" />
+                <my:jscript href="info.js" />
+                <link rel="stylesheet" href="join_play.css" type="text/css" />
+                <title>Csatlakozás jelszóvédett játszmához</title>
+            </head>
+            <body>
+                <div id="outer"><div id="middle"><div id="inner">
+                    <div id="descr">Csatlakozás jelszóvédett játszmához</div>
+                    <form action="FormRequest" method="post">
+                        <table>
+                            <tr>
+                                <td class="attr">Játszma:</td>
+                                <td><input type="text" id="name" class="input" readonly="" value="${storage.requestedGameName}" /></td>
+                            </tr>
+                            <tr>
+                                <td class="attr">Jelszó:</td>
+                                <td><input type="password" name="game_password" id="password" class="input" /><!-- title="${storage.passwordConstrain}" --></td>
+                            </tr>
+                        </table>
+                        <div class="create">
+                            <input id="join" type="submit" name="join_game" class="button" value="Csatlakozik" />
+                            <a href="index.jspx"><input type="button" value="Mégsem" /></a>
+                        </div>
+                    </form>
+                </div></div></div>
+            </body>
+        </html>
+    </jsp:body>
+</jsp:root>

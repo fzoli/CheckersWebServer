@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:my="/WEB-INF/mytld"
+          version="2.0">
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8" />
+    <jsp:body>
+        <jsp:useBean id="storage"  class="mill.Storage" scope="session" />
+        <c:if test="${storage.isUserSet}" >
+            <jsp:forward page="index.jspx" />
+        </c:if>
+        <jsp:output doctype-root-element="html"
+                    doctype-public="-//W3C//DTD XHTML 1.1//EN"
+                    doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd" />
+        <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <my:jscript href="lib/jquery.js" />
+                <my:jscript href="lib/jquery-tools.js" />
+                <my:jscript href="lib/jquery-maskedinput.js" />
+                <my:jscript href="info.js" />
+                <link rel="stylesheet" href="sign_in.css" type="text/css" />
+                <title>Bejelentkezés</title>
+            </head>
+            <body>
+                <div id="outer"><div id="middle"><div id="inner">
+                    <div id="head">Online Dámajáték</div>
+                    <c:set var="errorStyle" value="" />
+                    <c:if test="${storage.isMessageNull}" >
+                        <c:set var="errorStyle" value="visibility:hidden" />
+                    </c:if>
+                    <div id="error" style="${errorStyle}">${storage.message}</div>
+                    <form action="FormRequest" method="post">
+                        <div class="border">
+                            <div id="message">Kérem, adja meg az adatait.</div>
+                            <table id="signin">
+                                <tr>
+                                    <td class="right">Felhasználónév</td>
+                                    <td><input name="id" type="text" id="id" class="input" value="${storage.requestedId}" title="${storage.userIdConstrain}" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="right">Jelszó</td>
+                                    <td><input name="password" type="password" id="password" class="input" title="${storage.passwordConstrain}" /></td>
+                                </tr>
+                            </table>
+                            <div id="bottom"><input id="submit" type="submit" name="sign_in" value="Belép" /></div>
+                        </div>
+                    </form>
+                    <div id="info">Az első bejelentkezés egyben regisztráció is.</div>
+                    </div></div></div>
+            </body>
+        </html>
+    </jsp:body>
+</jsp:root>

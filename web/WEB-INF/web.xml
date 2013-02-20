@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <servlet>
+        <servlet-name>FormRequestHandler</servlet-name>
+        <servlet-class>mill.servlet.FormRequestHandler</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>XmlRequestHandler</servlet-name>
+        <servlet-class>mill.servlet.XmlRequestHandler</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EventRequestHandler</servlet-name>
+        <servlet-class>mill.servlet.EventRequestHandler</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FormRequestHandler</servlet-name>
+        <url-pattern>/FormRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>XmlRequestHandler</servlet-name>
+        <url-pattern>/XmlRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EventRequestHandler</servlet-name>
+        <url-pattern>/EventRequest</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.jspx</welcome-file>
+    </welcome-file-list>
+</web-app>

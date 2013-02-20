@@ -1,0 +1,79 @@
+@charset "utf-8";
+@import url('center.css');
+
+/* A figura kinézetének beállítása { */
+div.checkerP1B, div.checkerP2B, div.checkerP1Q, div.checkerP2Q {
+	border-radius: 33px;
+	border: solid 3px black;
+	width: 60px;
+	height: 60px;
+	cursor: pointer;
+}
+
+div.checkerP1B, div.checkerP1Q {
+	background-color: red;
+}
+
+div.checkerP2B, div.checkerP2Q {
+	background-color: blue;
+}
+
+div.checkerP1Q, div.checkerP2Q {
+	border-color: white;
+}
+/* } */
+
+/* A játéktábla keretezése és négyzetek közti rés eltávolítása */
+div#checkerboard table {
+	border-spacing: 0px;
+	border: solid 5px black;
+}
+
+/* A játéktábla, üzenet és figurák középre igazítása */
+div.checkerP1B, div.checkerP2B, div.checkerP1Q, div.checkerP2Q, div#checkerboard table, div#message {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* A játéktábla négyzeteinek helyfoglalása és alapszín beállítása */
+/* A négyzetek mérete HETVEN pixel */
+div#checkerboard table td {
+	width: 70px;
+	height: 70px;
+	padding: 0px;
+	background-color: rgb(50,110,50);
+}
+
+/* A figurák számára tiltott négyzetek átszinezése */
+div#checkerboard table td.gap {
+	background-color: rgb(250,200,30);
+}
+
+/* Az üzenet alatt kis szabad hely beállítása */
+div#message {
+	margin-bottom: 6px;
+	width: 560px;
+}
+
+/* A játéküzenet és JavaScript bekapcsoló üzenet betűtípusának beállítása és szöveg középre igazítása */
+div#warning, div#message {
+	text-align: center;
+	font-size: 32px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Hézag beállítása a StartStop és Exit gomb közé */
+input#btGiveUp {
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+/* Hogy azonos méretű gombok legyenek és legyen hézag a tábla és gombok között */
+input#btStartStop, input#btExit, input#btGiveUp {
+	width: 80px;
+	margin-top: 6px;
+}
+
+a {
+	text-decoration: none;
+}

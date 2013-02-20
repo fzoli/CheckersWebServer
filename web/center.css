@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+/*Középre igazításért felelős rész { */
+html, body {height: 100%;}
+body {margin: 0;}
+#outer {height: 100%; overflow: hidden; position: relative; width: 100%;}
+#outer[id] {display: table; position: static;}
+#middle {position: absolute; top: 50%; width: 100%; text-align: center;} /* IE */
+#middle[id] {display: table-cell; vertical-align: middle; position: static;}
+#inner {position: relative; top: -50%; text-align: left;} /* IE */
+#inner {width: 600px; margin-left: auto; margin-right: auto; text-align: center; display: table;}
+/* } */

@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+.tooltip {
+	display:none;
+	background:transparent url(lib/images/black_arrow.png);
+	font-size:12px;
+	height:70px;
+	width:160px;
+	padding:25px;
+	color:#fff;	
+}

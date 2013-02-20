@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:my="/WEB-INF/mytld"
+          version="2.0">
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+    <jsp:body>
+        <jsp:output doctype-root-element="html"
+                    doctype-public="-//W3C//DTD XHTML 1.1//EN"
+                    doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd" />
+        <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <my:jscript href="lib/jquery.js" />
+                <my:jscript href="lib/jquery-ui.js" />
+                <my:jscript href="game.js" />
+                <my:jscript href="lib/firebug-lite/build/firebug-lite.js" />
+                <link rel="stylesheet" href="game.css" />
+                <title>Dáma</title>
+            </head>
+            <body>
+                <div id="outer">
+                    <div id="middle">
+                        <div id="inner">
+                            <div id="message">${null}</div>
+                            <div id="checkerboard">
+                                <div id="warning">A játékhoz a JavaScript engedélyezése szükséges.</div>
+                            </div>
+                            <span id="start_stop">${null}</span><span id="give_up">${null}</span><a href="index.jspx"><input id="btExit" type="button" value="Kilép" /></a>
+                        </div>
+                    </div>
+                </div>
+            </body>
+        </html>
+    </jsp:body>
+</jsp:root>

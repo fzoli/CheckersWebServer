@@ -1,0 +1,224 @@
+/*Play <A href="http://www.flyordie.com">free online games</A>!<!--*/
+h1, h2, h3, h4, h5, body, .normal, .ogl, .smalltitle, .smallbluetitle, .copyright, .smallorangetitle, .orangetitle, .note, .label, .buttonlabel, .small, .smallbold, .privacypolicy, .errormsg, .gold, .smallgold, .silver, .smallsilver, .bronze, .smallbronze
+{
+	font-family: verdana, arial, geneva, helvetica, sans-serif;
+	text-decoration: none;
+	background: transparent;
+}
+h1, h2, h3, h4, h5  {
+font-weight: bold;
+color: #106ba8;
+}
+
+
+h1 {
+	font-size: 24px;
+}
+h2 {
+	font-size: 20px;
+}
+h3 {
+	font-size: 16px;
+}
+h4 {
+	font-size: 14px;
+}
+h5 {
+	font-size: 12px;
+}
+
+
+body {
+	font-size: 12px;
+	color: black;
+}
+.normal {
+	font-size: 12px;
+	color: black;
+}
+.smalltitle {
+	font-size: 12px;
+	color: #106ba8;
+	font-weight: bold;
+}
+.smallbluetitle {
+	font-size: 12px;
+	color: #106ba8;
+	font-weight: bold;
+}
+.copyright {
+	font-size: 10px;
+	color: black;
+	font-weight: normal;
+}
+.smallorangetitle {
+	font-size: 12px;
+	color: #ff9705;
+	font-weight: bold;
+}
+.orangetitle {
+	font-size: 16px;
+	color: #ff9705;
+	font-weight: bold;
+}
+.nomargin{
+margin-top:0; 
+margin-bottom:0; 
+padding-top:0px;
+padding-bottom:2px;
+}
+.note {
+	font-size: 10px;
+	color: #ff9705;
+	font-weight: normal;
+}
+.label {
+	font-size: 12px;
+	color: black;
+	font-weight: bold;
+}
+.buttonlabel {
+	font-size: 12px;
+	color: black;
+
+}
+.small {
+	font-size: 10px;
+	font-weight: normal;
+	color: black;
+}
+.ogl {font-size: 10px;
+	color: black;}
+.smallbold {
+	font-size: 10px;
+	color: black;
+	font-weight: bold;
+}
+.bold {
+	font-size: 12px;
+	color: black;
+	font-weight: bold;
+}
+.privacypolicy {
+	font-size: 10px;
+	color: #1295ec;
+}
+.errormsg {
+	font-size: 10px;
+	color: red;
+}
+.inputbox {
+	color: black; background-color: white ; border-bottom: #ff9705 2px solid; border-left: none ; border-right: none; border-top: none ; font-family: verdana, arial, geneva, helvetica, sans-serif; font-size: 12px;
+}
+.button{
+	background-color: #106ba8;
+	border-left: 2px solid #5ab4ef;
+	border-top: 2px solid #5ab4ef;
+	border-right: 3px solid #083854;
+	border-bottom: 3px solid #083854;
+	font-family: verdana, arial, geneva, helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: white;
+}
+.buttonCell {
+	height: 26px;
+	width: 114px;
+	background: url('http://www.flyordie.com/games/lib/images/button1.gif') no-repeat center;
+}	
+a:link {
+	color: #106ba8;
+	background: transparent;
+}
+a:visited {
+	color: #106ba8;
+	background: transparent;
+}
+a:hover{color:orange}
+
+.w460 { width: 460px } 
+
+.w500 { width: 500px } 
+
+.w600 { width: 600px } 
+
+.gold {
+	font-size: 12px;
+	color: #F6CD2A;
+	font-weight: bold;
+	white-space: nowrap;
+}
+.smallgold {
+	font-size: 10px;
+	color: #F6CD2A;
+	font-weight: bold;
+}
+.silver {
+	font-size: 12px;
+	color: #95B1B7;
+	font-weight: bold;
+	white-space: nowrap;
+}
+.smallsilver {
+	font-size: 10px;
+	color: #95B1B7;
+	font-weight: bold;
+}
+.bronze {
+	font-size: 12px;
+	color: #816C6A;
+	font-weight: bold;
+	white-space: nowrap;
+}
+.smallbronze {
+	font-size: 10px;
+	color: #816C6A;
+	font-weight: bold;
+}
+
+.dialog {
+	background-color: #f7f7f7;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+}
+
+table.hs {  width: 660px;
+border: 2px solid   #106ba8; 
+border-collapse: collapse;
+	font-family: verdana, arial, geneva, helvetica, sans-serif;
+	font-size: 12px;
+	color: black;
+}
+
+table.hs_header {  width: 660px;
+	border: 2px solid   #ff9705; 
+	border-collapse: collapse;
+	font-family: verdana, arial, geneva, helvetica, sans-serif;
+	font-size: 12px;
+	color: black;
+	background: #ffffff;
+} 
+
+table.noborder {  width: 660px;
+			border: 0px; 
+border-collapse: collapse 
+} 
+td.header { border: 2px solid  #ff9705; } 
+
+table.n1	{  	width: 100%;
+			border: 3px solid #ff9705;
+			border-collapse: collapse;
+			empty-cells: show;
+			padding: 2px;
+			border-spacing: 0px;
+}
+
+td.n1 { border: 1px solid  #ff9705}
+th.n1 { border: 2px solid  #ff9705}
+
+table.logo{
+width: 0px;
+height: 0px;
+}
+/*-->*/
