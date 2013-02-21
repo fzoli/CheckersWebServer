@@ -3,14 +3,14 @@
 package mill.servlet;
 
 import java.io.PrintWriter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.swing.Timer;
 import mill.Storage;
 import mill.event.CommonEvent;
 import mill.event.Eventable;
 
 public class EventRequestHandler extends AjaxRequestHandler {
-
-    private Storage storage;
     
     @Override
     public String getServletInfo() {
@@ -18,19 +18,19 @@ public class EventRequestHandler extends AjaxRequestHandler {
     }
 
     @Override
-    protected void process() {
-        storage = getStorage();
-        setContentTypeToXml();
-        PrintWriter out = getWriter();
+    protected void process(HttpServletRequest request, HttpServletResponse response) {
+        Storage storage = getStorage(request);
+        setContentTypeToXml(response);
+        PrintWriter out = getWriter(response);
         out.print(getEmptyXmlResponse());
-        if (isPosted("action")) {
-            if (isAction("waitListEvent")) {
+        if (isPosted(request, "action")) {
+            if (isAction(request, "waitListEvent")) {
                 waitEvent(new CommonEvent());
             }
-            else if (isAction("waitGameEvent")) {
+            else if (isAction(request, "waitGameEvent")) {
                 waitEvent(storage.getGameEvent());
             }
-            else if (isAction("ImHere")) {
+            else if (isAction(request, "ImHere")) {
                 storage.updateLastConnectSign();
                 waitEvent(storage.getDisconnectEvent());
             }

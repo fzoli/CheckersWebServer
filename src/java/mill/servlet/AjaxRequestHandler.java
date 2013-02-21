@@ -4,6 +4,8 @@ package mill.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.dom4j.dom.DOMDocument;
 import org.w3c.dom.Element;
 
@@ -15,23 +17,23 @@ public abstract class AjaxRequestHandler extends RequestHandler {
         return timeout;
     }
     
-    protected boolean isAction(String str) {
-        String action = getRequest().getParameter("action");
+    protected boolean isAction(HttpServletRequest request, String str) {
+        String action = request.getParameter("action");
         if (action == null) return false;
         return action.equals(str);
     }
     
-    protected PrintWriter getWriter() {
+    protected PrintWriter getWriter(HttpServletResponse response) {
         try {
-            return getResponse().getWriter();
+            return response.getWriter();
         }
         catch(IOException ex) {
             return null;
         }
     }
     
-    protected void setContentTypeToXml() {
-        getResponse().setContentType("text/xml; charset=utf-8");
+    protected void setContentTypeToXml(HttpServletResponse response) {
+        response.setContentType("text/xml; charset=utf-8");
     }
     
     protected String getEmptyXmlResponse() {

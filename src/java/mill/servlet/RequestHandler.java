@@ -9,83 +9,48 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import mill.Storage;
 
 public abstract class RequestHandler extends HttpServlet {
 
-    private Storage storage;
-    private HttpServletRequest request;
-    private HttpServletResponse response;  
-    
-    protected Storage getStorage() {
+    //ha még nincs storage, létrehozza, egyébként elkéri
+    protected Storage getStorage(HttpServletRequest request) {
+        Storage storage = null;
+        try { //a biztonság kedvéért
+            storage = (Storage)request.getSession(true).getAttribute("storage");
+        }
+        catch(Exception ex) {}
+        finally {
+            if (storage == null) { //üres süti esetén
+                Storage s = new Storage();
+                request.getSession(true).setAttribute("storage", s);
+                storage = s;
+            }
+        }
         return storage;
     }
     
-    protected HttpServletRequest getRequest() {
-        return request;
-    }
-    
-    protected HttpServletResponse getResponse() {
-        return response;
-    }
-    
-    protected boolean isPosted(String str) {
+    protected boolean isPosted(HttpServletRequest request, String str) {
         return request.getParameter(str) != null;
     }
     
-    protected void redirect(String url) {
-        redirect(response, url);
-    }
-    
-    protected void redirectToIndex() {
-        redirectToIndex(response);
-    }
-    
-    private void redirectToIndex(HttpServletResponse response) {
+    protected void redirectToIndex(HttpServletResponse response) {
         redirect(response, "index.jspx");
     }
     
-    private void redirect(HttpServletResponse response, String url) {
+    protected void redirect(HttpServletResponse response, String url) {
         try {
             response.sendRedirect(url);
         }
         catch(IOException ex) {}
     }
     
-    //request, response, storage beállítása illetve utf-8 kódolás beállítása
-    private void initVariables(HttpServletRequest request, HttpServletResponse response) {
-        this.request = request; //fontos, hogy első legyen, mert a többi használja
-        fixUTF8();
-        this.response = response;
-        setStorage();
-    }
-    
     //utf-8 kódolás beállítása, hogy jó legyen a post-ban kapott adatok kiolvasása
-    private void fixUTF8() {
+    private void fixUTF8(HttpServletRequest request) {
         try {
             request.setCharacterEncoding("utf-8");
         }
         catch(UnsupportedEncodingException ex) {}
-    }
-    
-    //ha még nincs storage, létrehozza, egyébként elkéri
-    private void setStorage() {
-        try { //a biztonság kedvéért
-            storage = (Storage)getSession().getAttribute("storage");
-        }
-        catch(Exception ex) {}
-        finally {
-            if (storage == null) { //üres süti esetén
-                Storage s = new Storage();
-                getSession().setAttribute("storage", s);
-                storage = s;
-            }
-        }
-    }
-    
-    private HttpSession getSession() {
-        return request.getSession(true);
     }
     
     //get esetén vissza a kezdőoldalra...
@@ -97,8 +62,8 @@ public abstract class RequestHandler extends HttpServlet {
     //post esetén példányváltozók beállítása és feldolgozás
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        initVariables(request, response);
-        process();
+        fixUTF8(request);
+        process(request, response);
     }
     
     //minden szervletnek egyedi infója van
@@ -106,6 +71,6 @@ public abstract class RequestHandler extends HttpServlet {
     public abstract String getServletInfo();
     
     //minden szervlet mást-mást csinál
-    protected abstract void process();
+    protected abstract void process(HttpServletRequest request, HttpServletResponse response);
     
 }

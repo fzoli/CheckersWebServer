@@ -1,7 +1,6 @@
 package mill.servlet;
 
 import java.io.PrintWriter;
-import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,12 +15,6 @@ import org.dom4j.dom.DOMDocument;
 import org.w3c.dom.Element;
 
 public class XmlRequestHandler extends AjaxRequestHandler {
-
-    private Storage storage;
-    private HttpServletRequest request;
-    private HttpServletResponse response;
-    private boolean playCreateSuccess;
-    private int timeout = getTimeout();
     
     @Override
     public String getServletInfo() {
@@ -29,64 +22,62 @@ public class XmlRequestHandler extends AjaxRequestHandler {
     }
     
     @Override
-    protected void process() {
-        storage = getStorage();
-        request = getRequest();
-        response = getResponse();
-        setContentTypeToXml();
-        PrintWriter out = getWriter();
+    protected void process(HttpServletRequest request, HttpServletResponse response) {
+        Storage storage = getStorage(request);
+        setContentTypeToXml(response);
+        PrintWriter out = getWriter(response);
         if (out == null) {
             return;
         }
-        if (isAction("test")) {
+        if (isAction(request, "test")) {
             out.print(createTestXml());
         }
-        else if (isAction("getPlayList")) {
-            out.print(getXmlPlayList());
+        else if (isAction(request, "getPlayList")) {
+            out.print(getXmlPlayList(storage));
         }
-        else if (isAction("createGame")) {
-            out.print(getCreatePlayXml());
+        else if (isAction(request, "createGame")) {
+            out.print(getCreatePlayXml(request, storage));
         }
-        else if (isAction("getPlayData")) {
-            out.print(getPlayDataXml());
+        else if (isAction(request, "getPlayData")) {
+            out.print(getPlayDataXml(storage));
         }
-        else if (isAction("validateUser")) {
-            out.print(getUserValidateXml());
+        else if (isAction(request, "validateUser")) {
+            out.print(getUserValidateXml(request));
         }
         else {
-            if (isAction("exitGame")) {
-                leaveGame();
+            if (isAction(request, "exitGame")) {
+                leaveGame(storage);
             }
-            else if (isAction("start_stop")) {
-                playStartStop();
+            else if (isAction(request, "start_stop")) {
+                playStartStop(storage);
             }
-            else if (isAction("give_up")) {
-                playGiveUp();
+            else if (isAction(request, "give_up")) {
+                playGiveUp(storage);
             }
-            else if (isAction("move")) {
-                moveChecker();
+            else if (isAction(request, "move")) {
+                moveChecker(request, storage);
             }
             out.print(getEmptyXmlResponse());
         }
         out.close();
     }
 
-    private void leaveGame() {
+    private void leaveGame(Storage storage) {
         UserActions.leavePlay(storage);
     }
     
-    private void playGiveUp() {
+    private void playGiveUp(Storage storage) {
         UserActions.getPlay(storage).giveUp(storage);
     }
     
-    private void playStartStop() {
+    private void playStartStop(Storage storage) {
         Play p = UserActions.getPlay(storage);
         if (p != null) {
             p.startStop(storage);
         }
     }
     
-    private void moveChecker() {
+    private void moveChecker(HttpServletRequest request, Storage storage) {
         int fromRow, fromCol, toRow, toCol;
         try {
             fromRow = Integer.parseInt(request.getParameter("fromRow"));
@@ -111,14 +102,13 @@ public class XmlRequestHandler extends AjaxRequestHandler {
         return doc.asXML();
     }
     
-    private String getXmlPlayList() {
-        Storage storage = this.storage; //látszólag semmi értelme xD
+    private String getXmlPlayList(Storage storage) {
         DOMDocument doc = new DOMDocument();
         Element root = doc.createElement("response");
         doc.appendChild(root);
         String message = storage.getIsUserSet() ? storage.getMessage() : "Viszlát.";
         root.setAttribute("message", message);
-        root.setAttribute("timeout", Integer.toString(timeout));
+        root.setAttribute("timeout", Integer.toString(getTimeout()));
         root.setAttribute("user", storage.getUsername());
         root.setAttribute("lastAction", UserActions.getLastAction());
         root.setAttribute("isPlayerInGame", boolAsString(storage.getIsUserInGame()));
@@ -136,7 +126,7 @@ public class XmlRequestHandler extends AjaxRequestHandler {
         return doc.asXML();
     }
     
-    private String getUserValidateXml() {
+    private String getUserValidateXml(HttpServletRequest request) {
         String user = request.getParameter("user");
         String password = request.getParameter("password");
         boolean userExists = false;
@@ -153,9 +143,21 @@ public class XmlRequestHandler extends AjaxRequestHandler {
         return doc.asXML();
     }
     
-    private String createPlay() {
+    private static class PlayCreateData {
+        
+        public final String MESSAGE;
+        public final boolean SUCCESS;
+
+        public PlayCreateData(String message, boolean success) {
+            MESSAGE = message;
+            SUCCESS = success;
+        }
+        
+    }
+    
+    private PlayCreateData createPlay(HttpServletRequest request, Storage storage) {
         String message = "Hibás kérés.";
-        playCreateSuccess = false;
+        boolean playCreateSuccess = false;
         String name = request.getParameter("name");
         String password = request.getParameter("password");
         if (name != null) {
@@ -197,20 +199,20 @@ public class XmlRequestHandler extends AjaxRequestHandler {
                 message = "Hibásan formázott név.";
             }
         }
-        return message;
+        return new PlayCreateData(message, playCreateSuccess);
     }
     
-    private String getCreatePlayXml() {
+    private String getCreatePlayXml(HttpServletRequest request, Storage storage) {
         DOMDocument doc = new DOMDocument();
         Element root = doc.createElement("response");
         doc.appendChild(root);
-        root.setAttribute("message", createPlay());
-        root.setAttribute("success", boolAsString(playCreateSuccess));
+        PlayCreateData data = createPlay(request, storage);
+        root.setAttribute("message", data.MESSAGE);
+        root.setAttribute("success", boolAsString(data.SUCCESS));
         return doc.asXML();
     }
     
-    private String getPlayDataXml() {
-        Storage storage = this.storage; //ez az egy apróság megoldja a bugot??? -.-
+    private String getPlayDataXml(Storage storage) {
         DOMDocument doc = new DOMDocument();
         Element root = doc.createElement("response");
         doc.appendChild(root);
@@ -248,7 +250,7 @@ public class XmlRequestHandler extends AjaxRequestHandler {
                 data.setAttribute("message", "Játszmából kilépve.");
             }
             else {
-                return getXmlPlayList(); // ... megpróbáljuk újra
+                return getXmlPlayList(storage); // ... megpróbáljuk újra
             }
         }
         return doc.asXML();
