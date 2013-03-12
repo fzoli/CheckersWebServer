@@ -1,6 +1,6 @@
 //mindenkinek szóló eseményjelzés
 
-package mill.event;
+package checkers.event;
 
 public class CommonEvent implements Eventable {
     

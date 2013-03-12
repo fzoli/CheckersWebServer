@@ -1,10 +1,10 @@
 //az összes munkamenetet tárolja
 
-package mill.core;
+package checkers.core;
 
 import java.util.ArrayList;
 import java.util.List;
-import mill.Storage;
+import checkers.Storage;
 
 public class StorageRegistry {
     

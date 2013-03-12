@@ -1,6 +1,6 @@
 //Ez a szervlet ajax kérésekre válaszoláshoz szükséges
 
-package mill.servlet;
+package checkers.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;

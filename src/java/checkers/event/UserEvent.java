@@ -1,6 +1,6 @@
 //egyetlen egy munkamenetnek szóló eseményjelzés
 
-package mill.event;
+package checkers.event;
 
 public class UserEvent implements Eventable {
 

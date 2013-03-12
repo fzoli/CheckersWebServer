@@ -1,13 +1,13 @@
 //közös metódusok, amiket minden osztály használhat
 //felhasználóhoz köthető műveletek
 
-package mill.core;
+package checkers.core;
 
-import mill.event.CommonEvent;
+import checkers.event.CommonEvent;
 import java.util.List;
-import mill.Play;
-import mill.Storage;
-import mill.database.Executor;
+import checkers.Play;
+import checkers.Storage;
+import checkers.database.Executor;
 
 public class UserActions {
     

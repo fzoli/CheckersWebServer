@@ -1,14 +1,14 @@
 //a játszmákat tárolja és szinkronizál az adatbázissal
 
-package mill.core;
+package checkers.core;
 
-import mill.event.CommonEvent;
+import checkers.event.CommonEvent;
 import java.util.List;
 import java.util.ArrayList;
-import mill.Play;
-import mill.Storage;
-import mill.database.Executor;
-import mill.database.table.Game;
+import checkers.Play;
+import checkers.Storage;
+import checkers.database.Executor;
+import checkers.database.table.Game;
 
 public class PlayRegistry {
     

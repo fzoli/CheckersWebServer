@@ -1,13 +1,13 @@
 //form-ból küldött post feldolgozása
 
-package mill.servlet;
+package checkers.servlet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import mill.Play;
-import mill.Storage;
-import mill.core.PlayRegistry;
-import mill.core.UserActions;
+import checkers.Play;
+import checkers.Storage;
+import checkers.core.PlayRegistry;
+import checkers.core.UserActions;
 
 public class FormRequestHandler extends RequestHandler {
     

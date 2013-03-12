@@ -1,7 +1,7 @@
 //Ez az osztály tartalmazza az alap szervlet metódusokat
 //Redirect (get esetén index.jspx), Storage elkérés, request elkérés, response elkérés
 
-package mill.servlet;
+package checkers.servlet;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -9,7 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import mill.Storage;
+import checkers.Storage;
 
 public abstract class RequestHandler extends HttpServlet {
 

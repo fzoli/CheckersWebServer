@@ -1,16 +1,16 @@
-package mill;
+package checkers;
 
 //Ez az osztály a JSPX oldalak babja, mint munkamenetkezelő
 
-import mill.core.PlayRegistry;
-import mill.core.InputValidator;
-import mill.core.StorageRegistry;
-import mill.core.UserActions;
-import mill.event.DisconnectListener;
-import mill.event.Eventable;
-import mill.event.UserEvent;
+import checkers.core.PlayRegistry;
+import checkers.core.InputValidator;
+import checkers.core.StorageRegistry;
+import checkers.core.UserActions;
+import checkers.event.DisconnectListener;
+import checkers.event.Eventable;
+import checkers.event.UserEvent;
 import javax.swing.Timer;
-import mill.database.Executor;
+import checkers.database.Executor;
 
 public class Storage {
     

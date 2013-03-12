@@ -1,11 +1,11 @@
 //ez az osztály kommunikál az adatbázissal hibernate segítségével
 
-package mill.database;
+package checkers.database;
 
 import java.util.List;
-import mill.core.InputValidator;
-import mill.database.table.Game;
-import mill.database.table.User;
+import checkers.core.InputValidator;
+import checkers.database.table.Game;
+import checkers.database.table.User;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;

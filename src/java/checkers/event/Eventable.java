@@ -1,6 +1,6 @@
 //Egy tároló lényegében, amiből meg lehet állapítani azt, hogy van-e esemény
 
-package mill.event;
+package checkers.event;
 
 public interface Eventable {
     

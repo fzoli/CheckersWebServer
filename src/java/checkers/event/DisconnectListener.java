@@ -1,11 +1,11 @@
 //arra kell, hogy a szerver detektálhassa, hogy megszakadt a kapcsolat a klienssel
 
-package mill.event;
+package checkers.event;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
-import mill.Storage;
+import checkers.Storage;
 
 public class DisconnectListener implements ActionListener {
 

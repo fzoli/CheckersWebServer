@@ -1,6 +1,6 @@
 //ellenőrzi a beviteli mezőket illetve megmondja, hogy mi legyen a title az input mezőkhöz
 
-package mill.core;
+package checkers.core;
 
 public class InputValidator {
     

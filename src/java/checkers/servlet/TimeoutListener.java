@@ -1,11 +1,11 @@
 //ha időtúllépés, akkor esemény kiváltása akkor is, ha nem keletkezett esemény
 //arra kell, hogy le lehessen állítani a szervert, mivel ha ez nem lenne, örökké futna a while(true) ciklus
 
-package mill.servlet;
+package checkers.servlet;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import mill.event.Eventable;
+import checkers.event.Eventable;
 
 class TimeoutListener implements ActionListener {
 

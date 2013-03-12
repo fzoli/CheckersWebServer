@@ -1,4 +1,4 @@
-package mill;
+package checkers;
 
 //a bíró játékos nyílvántartásához
 public class Player {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context unloadDelay="70000" antiJARLocking="true" path="/mill"/>
+<Context antiJARLocking="true" path="/checkers" unloadDelay="70000"/>
 <!--
 Beállítottam a szervlet időtúllépését 70 másodpercre,
 hogy a szervlet képes legyen 60 másodpercig is futni, és így képes legyen esemény jelzést küldeni a kliensnek.

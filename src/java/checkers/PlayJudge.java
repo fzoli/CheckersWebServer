@@ -1,11 +1,11 @@
 //ő a játszma bírója. tőle lehet megkérdezni hogy ki, mit tehet illetve, a játszma státuszát
 
-package mill;
+package checkers;
 
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
-import mill.event.CommonEvent;
+import checkers.event.CommonEvent;
 
 public class PlayJudge {
 

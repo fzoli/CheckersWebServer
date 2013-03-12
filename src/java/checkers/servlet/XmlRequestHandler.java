@@ -1,16 +1,16 @@
-package mill.servlet;
+package checkers.servlet;
 
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import mill.Checker;
-import mill.Play;
-import mill.PlayJudge;
-import mill.Storage;
-import mill.core.InputValidator;
-import mill.core.PlayRegistry;
-import mill.core.UserActions;
+import checkers.Checker;
+import checkers.Play;
+import checkers.PlayJudge;
+import checkers.Storage;
+import checkers.core.InputValidator;
+import checkers.core.PlayRegistry;
+import checkers.core.UserActions;
 import org.dom4j.dom.DOMDocument;
 import org.w3c.dom.Element;
 

@@ -1,4 +1,4 @@
-package mill.database;
+package checkers.database;
 
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;

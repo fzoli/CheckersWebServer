@@ -1,4 +1,4 @@
-package mill;
+package checkers;
 
 import java.awt.Point;
 

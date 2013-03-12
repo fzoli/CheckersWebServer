@@ -1,14 +1,14 @@
 //eseménykezeléshez készített szervlet
 
-package mill.servlet;
+package checkers.servlet;
 
 import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.Timer;
-import mill.Storage;
-import mill.event.CommonEvent;
-import mill.event.Eventable;
+import checkers.Storage;
+import checkers.event.CommonEvent;
+import checkers.event.Eventable;
 
 public class EventRequestHandler extends AjaxRequestHandler {
     

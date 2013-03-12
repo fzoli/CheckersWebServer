@@ -1,4 +1,4 @@
-package mill.database.table;
+package checkers.database.table;
 
 public class User {
     

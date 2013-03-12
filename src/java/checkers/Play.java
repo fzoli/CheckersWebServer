@@ -1,12 +1,12 @@
-package mill;
+package checkers;
 
-import mill.event.CommonEvent;
-import mill.database.table.Game;
+import checkers.event.CommonEvent;
+import checkers.database.table.Game;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import mill.core.UserActions;
-import mill.database.Executor;
+import checkers.core.UserActions;
+import checkers.database.Executor;
 
 public class Play {
     // { PÉLDÁNYVÁLTOZÓK
