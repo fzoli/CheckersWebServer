@@ -1,0 +1,18 @@
+Magyar, online dámajáték.
+Apache Tomcat webszerverre írt alkalmazás, JSPX formátumú nézetekkel.
+A távoli eseményfigyelés a long-pooling technológián alapul AJAX segítségével,
+jQuery keretrendszert használva a kliens oldalon futó JavaScript kódban.
+A kliens mind a FORM POST kéréseket, mind az AJAX által háttérben küldött
+POST kéréseket egy-egy erre a célra fejlesztett Servlet vezérlőnek küldi.
+Az AJAX kérésekre XML válasz érkezik az adatok feldolgozását követően,
+a FORM POST kérések végrehajtása után a HTTP fejlécben átirányítás történik
+a megfelelő oldalra, ahol egy JSPX oldal legenerálja a pillanatnyi állapotot
+a munkamenetben tárolt Java Bean objektum alapján. Ezt követően már
+az AJAX gondoskodik arról, hogy mindig naprakész adatokat mutasson az oldal.
+A szerver az adatokat bármilyen relációs adatbázisba képes menteni,
+mivel ORM-et használ (konkrétan Hibernate). Jelenleg H2 adatbázis van
+használatban, embedded módban használva, hogy ne kelljen szervert indítani hozzá.
+Az első adatbázis műveletnél ha az adatbázis nem létezik,
+a H2 létrehozza az adatbázis-fájlt, majd a Hibernate létrehozza
+az adatbázis tábláit, azok megszorításait és kapcsolatait;
+tehát az alkalmazás nem igényel semmi előre inicializálást.
