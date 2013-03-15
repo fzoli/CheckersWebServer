@@ -16,3 +16,9 @@ Az első adatbázis műveletnél ha az adatbázis nem létezik,
 a H2 létrehozza az adatbázis-fájlt, majd a Hibernate létrehozza
 az adatbázis tábláit, azok megszorításait és kapcsolatait;
 tehát az alkalmazás nem igényel semmi előre inicializálást.
+
+Az alkalmazás tesztelésének céljából a projekt beépítetten tartalmazza a Firebugot,
+ami az összes bönészőn szépen elfut.
+Az eredeti JavaScript kód megtalálható a forrás könyvtárban, az éles rendszeren
+minimalizált forráskód van használatban, ezzel a kódlopás is meg van nehezítve.
+(Bár mivel ez egy nyílt forráskódú projekt, ennek most nincs jelentősége.)
